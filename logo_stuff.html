@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GameTimeVault Logo Overlay</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif; /* futuristic font */
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+  .logo {
+    font-size: 60px;
+    font-weight: 700;
+    color: #00ff00;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow:
+      0 0 5px #00ff00,
+      0 0 10px #00ff00,
+      0 0 20px #00ff00,
+      0 0 40px #00ff00;
+    animation: float 4s ease-in-out infinite, pulseGlow 2s ease-in-out infinite;
+    cursor: default;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes pulseGlow {
+    0% { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00; }
+    50% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 60px #00ff00; }
+    100% { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00; }
+  }
+
+  /* Optional: vault icon behind the text */
+  .vault {
+    position: absolute;
+    font-size: 180px;
+    color: rgba(0,255,0,0.05);
+    z-index: -1;
+    animation: rotateVault 20s linear infinite;
+  }
+
+  @keyframes rotateVault {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+  <!-- Vault background element -->
+  <div class="vault">⚿</div> <!-- Unicode vault/safe icon as subtle background -->
+
+  <!-- Logo text -->
+  <div class="logo">GameTimeVault</div>
+</body>
+</html>

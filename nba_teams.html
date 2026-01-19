@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NBA Team Grid</title>
+<style>
+  body {
+    margin: 0;
+    background: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .team {
+    background: #5e4747;
+    border: 2px solid #444;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
+    padding: 10px 0;
+  }
+
+  .team img {
+    width: 100px;      /* fixed width */
+    height: 100px;     /* fixed height */
+    object-fit: contain; /* keeps logo proportions without stretching */
+    display: block;
+    margin: 0 auto;
+    transition: all 0.2s ease;
+  }
+
+  .team:hover {
+    background: #db1d1d;
+  }
+
+  /* SOLD effect: grayscale + dim overlay */
+  .sold img {
+    filter: grayscale(100%) brightness(50%);
+    opacity: 0.6;
+  }
+</style>
+</head>
+
+<body>
+  <div class="grid">
+    <!-- Row 1 -->
+    <div class="team"><img src="images/ATL.png" alt="Atlanta Hawks"></div>
+    <div class="team"><img src="images/BOS.png" alt="Boston Celtics"></div>
+    <div class="team"><img src="images/BKN.png" alt="Brooklyn Nets"></div>
+    <div class="team"><img src="images/CHA.png" alt="Charlotte Hornets"></div>
+    <div class="team"><img src="images/CHI.png" alt="Chicago Bulls"></div>
+    <div class="team"><img src="images/CLE.png" alt="Cleveland Cavaliers"></div>
+
+    <!-- Row 2 -->
+    <div class="team"><img src="images/DAL.png" alt="Dallas Mavericks"></div>
+    <div class="team"><img src="images/DEN.png" alt="Denver Nuggets"></div>
+    <div class="team"><img src="images/DET.png" alt="Detroit Pistons"></div>
+    <div class="team"><img src="images/GSW.png" alt="Golden State Warriors"></div>
+    <div class="team"><img src="images/HOU.png" alt="Houston Rockets"></div>
+    <div class="team"><img src="images/IND.png" alt="Indiana Pacers"></div>
+
+    <!-- Row 3 -->
+    <div class="team"><img src="images/LAC.png" alt="LA Clippers"></div>
+    <div class="team"><img src="images/LAL.png" alt="Los Angeles Lakers"></div>
+    <div class="team"><img src="images/MEM.png" alt="Memphis Grizzlies"></div>
+    <div class="team"><img src="images/MIA.png" alt="Miami Heat"></div>
+    <div class="team"><img src="images/MIL.png" alt="Milwaukee Bucks"></div>
+    <div class="team"><img src="images/MIN.png" alt="Minnesota Timberwolves"></div>
+
+    <!-- Row 4 -->
+    <div class="team"><img src="images/NOP.png" alt="New Orleans Pelicans"></div>
+    <div class="team"><img src="images/NYK.png" alt="New York Knicks"></div>
+    <div class="team"><img src="images/OKC.png" alt="Oklahoma City Thunder"></div>
+    <div class="team"><img src="images/ORL.png" alt="Orlando Magic"></div>
+    <div class="team"><img src="images/PHI.png" alt="Philadelphia 76ers"></div>
+    <div class="team"><img src="images/PHX.png" alt="Phoenix Suns"></div>
+
+    <!-- Row 5 -->
+    <div class="team"><img src="images/POR.png" alt="Portland Trail Blazers"></div>
+    <div class="team"><img src="images/SAC.png" alt="Sacramento Kings"></div>
+    <div class="team"><img src="images/SAS.png" alt="San Antonio Spurs"></div>
+    <div class="team"><img src="images/TOR.png" alt="Toronto Raptors"></div>
+    <div class="team"><img src="images/UTA.png" alt="Utah Jazz"></div>
+    <div class="team"><img src="images/WAS.png" alt="Washington Wizards"></div>
+  </div>
+
+<script>
+  // Toggle SOLD class on click
+  document.querySelectorAll('.team').forEach(team => {
+    team.addEventListener('click', () => {
+      team.classList.toggle('sold');
+    });
+  });
+</script>
+
+</body>
+</html>
