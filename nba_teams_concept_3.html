@@ -4,35 +4,43 @@
 <meta charset="UTF-8">
 <title>NBA Team Grid Overlay</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
   body {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Orbitron', sans-serif;
     background: transparent;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
 
-  /* Animated background behind everything */
-
-
-  @keyframes bgMove {
-    0% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.05) rotate(1deg); }
-    100% { transform: scale(1) rotate(0deg); }
-  }
-
-  /* Frame around the grid for symmetry & smooth edges */
+  /* Frame around the grid */
   .frame {
     position: relative;
     margin: 0 auto;
     padding: 20px;
     border-radius: 30px;
-    border: 4px solid #1c7e1c; /* glowing green border */
-    box-shadow: 0 0 30px rgba(0,255,0,0.5);
+    border: 4px solid #2ecc71; /* gradient border applied via pseudo-element later */
+    box-shadow: 0 0 30px rgba(46,204,113,0.5);
     display: inline-block;
     z-index: 1;
     backdrop-filter: blur(10px);
-    background: rgba(167, 13, 13, 0); /* slightly transparent background behind grid */
+    background: rgba(0,0,0,0.4);
+  }
+
+  /* Gradient border effect using pseudo-element */
+  .frame::before {
+    content: '';
+    position: absolute;
+    top: -4px; left: -4px; right: -4px; bottom: -4px;
+    border-radius: 34px;
+    background: linear-gradient(45deg, #2ecc71, #1abc9c, #00ffff, #8e44ad);
+    z-index: -1;
+    filter: blur(10px);
   }
 
   /* Grid container */
@@ -47,22 +55,20 @@
   .team {
     width: 90px;
     height: 90px;
-    background: rgba(0,0,0,0.8);       /* black box with transparency */
-    border: 2px solid #236d23;         /* green border */
-    border-radius: 15px;                /* smooth edges */
+    background: rgba(0,0,0,0.6); /* slightly transparent black */
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 0 10px rgba(0,255,0,0.3);
+    transition: all 0.25s ease;
+    box-shadow: 0 0 10px rgba(46,204,113,0.3); /* faint glow in primary color */
   }
 
-  /* Hover effect */
+  /* Hover effect: gradient glow */
   .team:hover {
-    background: #003300;
-    border-color: #00FF00;
     transform: scale(1.05);
+    box-shadow: 0 0 20px #2ecc71, 0 0 30px #1abc9c, 0 0 40px #00ffff, 0 0 50px #8e44ad;
   }
 
   /* Logos */
@@ -72,6 +78,7 @@
     object-fit: contain;
     display: block;
     transition: all 0.2s ease;
+    filter: drop-shadow(0 0 5px #2ecc71) drop-shadow(0 0 10px #00ffff);
   }
 
   /* SOLD effect: dim + grayscale */
@@ -84,12 +91,7 @@
 </head>
 
 <body>
-  <!-- Animated background -->
-  <div class="background"></div>
-
-  <!-- Frame to center & smooth edges -->
   <div class="frame">
-    <!-- Team grid -->
     <div class="grid">
       <!-- Row 1 -->
       <div class="team"><img src="images/ATL.png" alt="Atlanta Hawks"></div>
